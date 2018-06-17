@@ -1,0 +1,6 @@
+urllib3
+bs4
+requests
+csv
+unicodedata
+pandas

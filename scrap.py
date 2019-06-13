@@ -9,7 +9,7 @@ import pandas as pd
 def get_links(tag, suffix):
     url = 'https://medium.com/tag/' + tag
     urls = [url + '/' + s for s in suffix]
-    links = []  
+    links = []
     for url in urls:
         data = requests.get(url)
         soup = BeautifulSoup(data.content, 'html.parser')
@@ -27,7 +27,7 @@ def get_article(links):
             soup = BeautifulSoup(data.content, 'html.parser')
             title = soup.findAll('title')[0]
             title = title.get_text()
-            author = soup.findAll('meta', {"property": "author"})[0]
+            author = soup.findAll('meta', {"name": "author"})[0]
             author = author.get('content')
             article['author'] = unicodedata.normalize('NFKD', author)
             claps  = soup.findAll('button', {"data-action":"show-recommends"})[0].get_text()
